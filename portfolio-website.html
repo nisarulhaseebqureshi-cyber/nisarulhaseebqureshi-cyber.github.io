@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#071012" />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Nisar Ul Haseeb Qureshi — Mechanical Engineering Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --ink: #172126;
+      --muted: #59666d;
+      --paper: #f4f6f5;
+      --surface: #ffffff;
+      --soft: #e7eceb;
+      --line: #c7d0ce;
+      --accent: #c7462b;
+      --accent-soft: #f5e7e2;
+      --steel: #294f61;
+      --steel-soft: #dce7eb;
+      --shadow: rgba(24, 40, 47, .10);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #eef3f1;
+        --muted: #a8b4b2;
+        --paper: #101719;
+        --surface: #172023;
+        --soft: #202b2e;
+        --line: #39474a;
+        --accent: #ff7355;
+        --accent-soft: #3c2520;
+        --steel: #9fc7d7;
+        --steel-soft: #1d323a;
+        --shadow: rgba(0, 0, 0, .28);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "IBM Plex Sans", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 4px; }
+    .shell { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: color-mix(in srgb, var(--paper) 94%, transparent);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+    .nav-inner {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .role-mark {
+      color: var(--steel);
+      font: 600 11px/1.3 "IBM Plex Mono", monospace;
+      letter-spacing: .06em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    main { overflow: hidden; }
+    .hero {
+      min-height: 72vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(300px, .55fr);
+      gap: clamp(48px, 8vw, 110px);
+      align-items: center;
+      padding-block: clamp(76px, 12vw, 142px);
+    }
+    .eyebrow {
+      margin: 0 0 22px;
+      color: var(--accent);
+      font: 600 11px/1.4 "IBM Plex Mono", monospace;
+      letter-spacing: .08em;
+    }
+    h1 {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(48px, 7.6vw, 92px);
+      line-height: .96;
+      letter-spacing: -.055em;
+      font-weight: 600;
+    }
+    .hero-copy {
+      max-width: 690px;
+      margin: 30px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.65;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 19px;
+      border: 1px solid var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      transition: background .18s, color .18s, border-color .18s;
+    }
+    .button.primary { background: var(--ink); color: var(--paper); }
+    .button.secondary { background: transparent; }
+    .button:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .hero-side { border-top: 3px solid var(--accent); padding-top: 22px; align-self: end; margin-bottom: 10px; }
+    .hero-side p { margin: 0 0 22px; color: var(--muted); font-size: 14px; }
+    .hero-side strong { display: block; margin-bottom: 5px; color: var(--ink); font-size: 15px; }
+    .coordinate {
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font: 500 11px/1.6 "IBM Plex Mono", monospace;
+    }
+
+    .stat-band {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-block: 1px solid var(--line);
+      background: var(--surface);
+    }
+    .stat { padding: 30px clamp(18px, 3vw, 34px); border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: 0; }
+    .stat strong { display: block; font-size: clamp(30px, 4vw, 46px); line-height: 1; letter-spacing: -.04em; }
+    .stat span { display: block; margin-top: 9px; color: var(--muted); font: 500 11px/1.4 "IBM Plex Mono", monospace; }
+
+    .section { padding-block: clamp(82px, 11vw, 138px); }
+    .section + .section { border-top: 1px solid var(--line); }
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(190px, .42fr) minmax(0, 1.58fr);
+      gap: clamp(40px, 8vw, 120px);
+    }
+    .section-index {
+      color: var(--accent);
+      font: 600 11px/1.5 "IBM Plex Mono", monospace;
+      letter-spacing: .08em;
+    }
+    h2 {
+      margin: 0 0 24px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.03;
+      letter-spacing: -.04em;
+      font-weight: 600;
+    }
+    .section-lede { max-width: 780px; margin: 0; color: var(--muted); font-size: clamp(17px, 2vw, 20px); line-height: 1.72; }
+
+    .discipline-list { margin-top: 48px; border-top: 1px solid var(--line); }
+    .discipline {
+      display: grid;
+      grid-template-columns: minmax(150px, .72fr) 1.28fr;
+      gap: 30px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .discipline h3 { margin: 0; font-size: 19px; letter-spacing: -.02em; }
+    .discipline p { margin: 0; color: var(--muted); }
+
+    .experience-block { margin-top: 50px; border-top: 1px solid var(--line); }
+    .experience-row {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: 30px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .experience-date { color: var(--muted); font: 500 11px/1.5 "IBM Plex Mono", monospace; }
+    .experience-row h3 { margin: 0 0 10px; font-size: 23px; }
+    .experience-row p { margin: 0; color: var(--muted); }
+    .machine-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 19px; }
+    .machine-strip span { padding: 7px 10px; background: var(--soft); font: 500 11px/1.2 "IBM Plex Mono", monospace; }
+
+    .projects { margin-top: 48px; }
+    .project {
+      display: grid;
+      grid-template-columns: 56px minmax(0, 1fr) minmax(190px, .45fr);
+      gap: 26px;
+      align-items: start;
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+    }
+    .project:last-child { border-bottom: 1px solid var(--line); }
+    .project-number { color: var(--accent); font: 600 12px/1.5 "IBM Plex Mono", monospace; }
+    .project h3 { margin: 0 0 9px; font-size: clamp(22px, 3vw, 30px); letter-spacing: -.025em; }
+    .project p { margin: 0; max-width: 650px; color: var(--muted); }
+    .project-tools { color: var(--steel); font: 600 10px/1.8 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .04em; }
+
+    .tech-section { background: var(--ink); color: var(--paper); }
+    @media (prefers-color-scheme: dark) {
+      .tech-section { background: #e8eeee; color: #172126; }
+    }
+    .tech-section .section-index { color: #ff8a6f; }
+    @media (prefers-color-scheme: dark) { .tech-section .section-index { color: #b73c25; } }
+    .tech-section .section-lede { color: color-mix(in srgb, currentColor 70%, transparent); }
+    .tech-list { margin-top: 45px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 42px; border-top: 1px solid color-mix(in srgb, currentColor 24%, transparent); }
+    .tech-item { padding: 24px 0; border-bottom: 1px solid color-mix(in srgb, currentColor 24%, transparent); }
+    .tech-item h3 { margin: 0 0 7px; font-size: 20px; }
+    .tech-item p { margin: 0; color: color-mix(in srgb, currentColor 68%, transparent); }
+
+    .closing {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 40px;
+      padding-block: clamp(72px, 10vw, 120px);
+    }
+    .closing h2 { max-width: 760px; margin-bottom: 18px; }
+    .closing p { max-width: 660px; margin: 0; color: var(--muted); font-size: 18px; }
+    .closing-note { color: var(--steel); text-align: right; font: 600 11px/1.7 "IBM Plex Mono", monospace; }
+    footer { border-top: 1px solid var(--line); padding-block: 24px 40px; color: var(--muted); font: 500 11px/1.5 "IBM Plex Mono", monospace; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 32px, 1160px); }
+      .nav-inner { min-height: 58px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 9px; padding-block: 12px; }
+      .nav-links { width: 100%; flex-wrap: wrap; justify-content: flex-start; gap: 9px 18px; }
+      .nav-links a { font-size: 12px; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 50px; padding-block: 72px 80px; }
+      h1 { font-size: clamp(47px, 15vw, 68px); }
+      .hero-side { align-self: auto; margin: 0; }
+      .stat-band { grid-template-columns: 1fr; }
+      .stat { display: flex; align-items: baseline; justify-content: space-between; gap: 22px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .stat:last-child { border-bottom: 0; }
+      .section-grid { grid-template-columns: 1fr; gap: 26px; }
+      .discipline { grid-template-columns: 1fr; gap: 8px; }
+      .experience-row { grid-template-columns: 1fr; gap: 10px; }
+      .project { grid-template-columns: 38px minmax(0, 1fr); gap: 14px; }
+      .project-tools { grid-column: 2; }
+      .tech-list { grid-template-columns: 1fr; }
+      .closing { grid-template-columns: 1fr; align-items: start; }
+      .closing-note { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    /* Dark glass workshop finish */
+    :root {
+      --ink: #edf5f5;
+      --muted: #a8b7ba;
+      --paper: #071012;
+      --surface: rgba(17, 31, 34, .68);
+      --soft: rgba(151, 196, 201, .10);
+      --line: rgba(202, 230, 232, .16);
+      --accent: #ff7658;
+      --accent-soft: rgba(255, 118, 88, .14);
+      --steel: #9ed2d8;
+      --steel-soft: rgba(81, 151, 160, .16);
+      --shadow: rgba(0, 0, 0, .34);
+    }
+
+    html { background: #071012; }
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(158, 210, 216, .025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(158, 210, 216, .025) 1px, transparent 1px),
+        radial-gradient(circle at 8% 7%, rgba(34, 111, 123, .22), transparent 31rem),
+        radial-gradient(circle at 93% 32%, rgba(255, 118, 88, .10), transparent 26rem),
+        #071012;
+      background-size: 56px 56px, 56px 56px, auto, auto, auto;
+      color: var(--ink);
+    }
+
+    .site-nav {
+      background: rgba(7, 16, 18, .72);
+      border-bottom-color: rgba(202, 230, 232, .13);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .12);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+    }
+    .role-mark { color: var(--steel); }
+    .nav-links a:hover { color: var(--ink); }
+
+    .hero {
+      position: relative;
+      min-height: calc(78vh - 36px);
+      margin-top: 36px;
+      padding-inline: clamp(30px, 5vw, 70px);
+      overflow: hidden;
+      border: 1px solid rgba(202, 230, 232, .18);
+      border-radius: 18px 42px 18px 18px;
+      background:
+        linear-gradient(118deg, rgba(255, 255, 255, .11), rgba(255, 255, 255, .035) 42%, rgba(12, 29, 32, .42)),
+        rgba(13, 27, 30, .54);
+      box-shadow:
+        0 38px 90px rgba(0, 0, 0, .30),
+        inset 0 1px 0 rgba(255, 255, 255, .12),
+        inset 1px 0 0 rgba(255, 255, 255, .04);
+      backdrop-filter: blur(26px) saturate(135%);
+      -webkit-backdrop-filter: blur(26px) saturate(135%);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 5%, rgba(255, 255, 255, .58) 30%, rgba(158, 210, 216, .18) 68%, transparent 95%);
+      pointer-events: none;
+    }
+    .eyebrow,
+    .section-index { color: var(--accent); }
+    .hero-copy,
+    .section-lede,
+    .discipline p,
+    .experience-row p,
+    .project p,
+    .closing p,
+    footer { color: var(--muted); }
+
+    .button {
+      border-color: rgba(237, 245, 245, .35);
+      border-radius: 10px;
+      background: rgba(237, 245, 245, .05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .button.primary {
+      color: #071012;
+      border-color: #dcebed;
+      background: #dcebed;
+    }
+    .button:hover {
+      color: #071012;
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+
+    .hero-side {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 0;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-top: 2px solid var(--accent);
+      border-radius: 8px 24px 8px 8px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, .085), rgba(255, 255, 255, .025));
+      box-shadow: 0 26px 70px rgba(0, 0, 0, .24), inset 0 1px 0 rgba(255, 255, 255, .08);
+      backdrop-filter: blur(22px) saturate(135%);
+      -webkit-backdrop-filter: blur(22px) saturate(135%);
+    }
+    .hero-side::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      right: -55px;
+      bottom: -55px;
+      border: 1px solid rgba(158, 210, 216, .18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 18px rgba(158, 210, 216, .025), 0 0 0 38px rgba(158, 210, 216, .018);
+      pointer-events: none;
+    }
+    .hero-side p { color: var(--muted); }
+    .hero-side strong { color: var(--ink); }
+
+    .stat-band {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(120deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .035));
+      box-shadow: 0 24px 65px rgba(0, 0, 0, .22), inset 0 1px 0 rgba(255, 255, 255, .08);
+      backdrop-filter: blur(20px) saturate(135%);
+      -webkit-backdrop-filter: blur(20px) saturate(135%);
+    }
+    .stat { border-color: var(--line); }
+    .stat strong { color: var(--ink); }
+
+    .section + .section { border-top-color: rgba(202, 230, 232, .10); }
+    .discipline-list,
+    .experience-block,
+    .projects { border-top: 0; }
+    .discipline,
+    .experience-row,
+    .project {
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255, 255, 255, .065), rgba(255, 255, 255, .022));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .055), 0 18px 45px rgba(0, 0, 0, .13);
+      backdrop-filter: blur(16px) saturate(125%);
+      -webkit-backdrop-filter: blur(16px) saturate(125%);
+    }
+    .discipline {
+      margin-top: 12px;
+      padding: 24px 26px;
+      border-radius: 8px 18px 8px 8px;
+    }
+    .experience-row {
+      margin-top: 14px;
+      padding: 28px;
+      border-radius: 8px 20px 8px 8px;
+    }
+    .project {
+      margin-top: 14px;
+      padding: 28px 26px;
+      border-radius: 8px 22px 8px 8px;
+    }
+    .project:last-child { border-bottom: 1px solid var(--line); }
+    .machine-strip span {
+      border: 1px solid rgba(158, 210, 216, .12);
+      border-radius: 6px;
+      background: rgba(158, 210, 216, .08);
+      color: #c7e1e4;
+    }
+    .project-tools { color: var(--steel); }
+
+    .tech-section {
+      position: relative;
+      color: var(--ink);
+      border-block: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 90% 15%, rgba(255, 118, 88, .11), transparent 25rem),
+        linear-gradient(135deg, rgba(19, 42, 46, .85), rgba(9, 20, 23, .94));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+    }
+    .tech-section .section-index { color: var(--accent); }
+    .tech-section .section-lede { color: var(--muted); }
+    .tech-list { border-top-color: var(--line); }
+    .tech-item { border-bottom-color: var(--line); }
+    .tech-item p { color: var(--muted); }
+
+    .closing-note { color: var(--steel); }
+    footer { border-top-color: var(--line); }
+
+    /* Final polish: clearer hierarchy, richer interaction, and a recruiter-ready contact finish */
+    .discipline,
+    .experience-row,
+    .project,
+    .contact-link {
+      transition: border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .discipline:hover,
+    .experience-row:hover,
+    .project:hover {
+      border-color: rgba(158, 210, 216, .28);
+      background: linear-gradient(135deg, rgba(255, 255, 255, .085), rgba(255, 255, 255, .03));
+      transform: translateY(-2px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07), 0 24px 56px rgba(0, 0, 0, .2);
+    }
+    .project-number,
+    .section-index,
+    .experience-date { font-variant-numeric: tabular-nums; }
+    .project h3,
+    .experience-row h3,
+    .discipline h3 { text-wrap: balance; }
+
+    .closing {
+      position: relative;
+      overflow: hidden;
+      margin-block: clamp(56px, 8vw, 92px);
+      padding: clamp(34px, 6vw, 68px);
+      border: 1px solid var(--line);
+      border-radius: 10px 30px 10px 10px;
+      background:
+        radial-gradient(circle at 92% 10%, rgba(255, 118, 88, .13), transparent 18rem),
+        linear-gradient(135deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .026));
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .24), inset 0 1px 0 rgba(255, 255, 255, .08);
+      backdrop-filter: blur(20px) saturate(130%);
+      -webkit-backdrop-filter: blur(20px) saturate(130%);
+    }
+    .closing::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 112px;
+      height: 2px;
+      background: var(--accent);
+    }
+    .closing .eyebrow { margin-bottom: 18px; }
+    .closing h2 { max-width: 720px; }
+    .contact-links {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+      gap: 12px;
+      margin-top: 34px;
+    }
+    .contact-link {
+      position: relative;
+      display: grid;
+      gap: 5px;
+      min-width: 0;
+      padding: 19px 52px 19px 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px 16px 8px 8px;
+      background: rgba(7, 16, 18, .36);
+      text-decoration: none;
+    }
+    .contact-link span {
+      color: var(--steel);
+      font: 600 10px/1.4 "IBM Plex Mono", monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .contact-link strong {
+      overflow-wrap: anywhere;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .contact-link::after {
+      content: "↗";
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      color: var(--accent);
+      font: 600 18px/1 "IBM Plex Mono", monospace;
+      transform: translateY(-50%);
+    }
+    .contact-link:hover {
+      color: var(--ink);
+      border-color: var(--accent);
+      background: rgba(255, 118, 88, .09);
+      transform: translateY(-2px);
+    }
+    .contact-link:focus-visible { border-color: var(--accent); }
+
+    @media (max-width: 760px) {
+      body {
+        background-size: 40px 40px, 40px 40px, auto, auto, auto;
+      }
+      .hero {
+        min-height: auto;
+        margin-top: 18px;
+        padding: 54px 20px 48px;
+        border-radius: 12px 28px 12px 12px;
+      }
+      .hero-side { padding: 24px; }
+      .stat-band { border-radius: 10px; }
+      .discipline,
+      .experience-row,
+      .project { padding: 22px 20px; }
+      .closing { margin-block: 42px; padding: 30px 22px; border-radius: 8px 22px 8px 8px; }
+      .contact-links { grid-template-columns: 1fr; }
+      .closing-note { padding-top: 4px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .discipline,
+      .experience-row,
+      .project,
+      .contact-link { transition: none; }
+      .discipline:hover,
+      .experience-row:hover,
+      .project:hover,
+      .contact-link:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Portfolio navigation">
+    <div class="shell nav-inner">
+      <div class="role-mark">MECHANICAL ENGINEERING · UMT LAHORE</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Projects</a>
+        <a href="#tech">Tech &amp; AI</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="shell hero" id="about">
+      <div>
+        <p class="eyebrow">MECHANICAL ENGINEERING PORTFOLIO</p>
+        <h1>Nisar Ul Haseeb Qureshi.</h1>
+        <p class="hero-copy">Fourth-semester BS Mechanical Engineering student focused on machine design, manufacturing, CFD, and practical problem-solving—from shop-floor processes to software tools.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#work">View selected projects</a>
+          <a class="button secondary" href="#experience">See experience</a>
+        </div>
+      </div>
+      <aside class="hero-side" aria-label="Current focus">
+        <p><strong>Current focus</strong>Machine design, manufacturing systems, CFD and CAD/CAM workflows.</p>
+        <p><strong>Approach</strong>Understand the system, test the assumptions, then improve the process.</p>
+        <div class="coordinate">BS MECHANICAL ENGINEERING<br>LAHORE, PAKISTAN</div>
+      </aside>
+    </section>
+
+    <div class="shell stat-band" aria-label="Academic highlights">
+      <div class="stat"><strong>3.99</strong><span>APPROX. CGPA</span></div>
+      <div class="stat"><strong>4th</strong><span>SEMESTER</span></div>
+      <div class="stat"><strong>2×</strong><span>MERIT AWARDS</span></div>
+    </div>
+
+    <section class="shell section">
+      <div class="section-grid">
+        <div class="section-index">01 / PROFILE</div>
+        <div>
+          <h2>Curious by design.</h2>
+          <p class="section-lede">I like taking systems apart—on the shop floor, in simulation, and in code—until the reason behind every motion is clear. That curiosity shapes how I study, build, and communicate engineering work.</p>
+          <div class="discipline-list">
+            <div class="discipline">
+              <h3>Design &amp; analysis</h3>
+              <p>Machine elements, loading, stress factors, design checks, and engineering calculations.</p>
+            </div>
+            <div class="discipline">
+              <h3>Manufacturing</h3>
+              <p>CNC machining, EDM, injection molding, thermoforming, tooling, and process troubleshooting.</p>
+            </div>
+            <div class="discipline">
+              <h3>Simulation</h3>
+              <p>CAD-led investigation of fluid behavior and mechanical systems using structured assumptions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section" id="experience">
+      <div class="section-grid">
+        <div class="section-index">02 / EXPERIENCE</div>
+        <div>
+          <h2>From CAD to the machine.</h2>
+          <p class="section-lede">Hands-on exposure to production equipment, tooling workflows, molding processes, and the details that separate a drawing from a manufacturable part.</p>
+          <div class="experience-block">
+            <article class="experience-row">
+              <div class="experience-date">AUGUST 2026</div>
+              <div>
+                <h3>Manufacturing Internship · Unit 1 &amp; Unit 2</h3>
+                <p>Worked around die-sinker EDM, CNC/VMC milling, manual and CNC lathes, 5-axis machining, die spotting, high-tonnage injection molding, thermoforming, extrusion, printing, and UV curing.</p>
+                <div class="machine-strip" aria-label="Machines encountered">
+                  <span>CHMER 50EZ EDM</span><span>Fanuc CNC / VMC</span><span>Haitian 2100-ton</span><span>FCS FT-1680SV</span><span>Shunxing SX260JM</span><span>EVEROX manual mill</span>
+                </div>
+              </div>
+            </article>
+            <article class="experience-row">
+              <div class="experience-date">ACADEMIC</div>
+              <div>
+                <h3>Merit Recognition</h3>
+                <p>Rector’s Merit Award, Dean’s Merit Award, and a merit-based scholarship.</p>
+              </div>
+            </article>
+            <article class="experience-row">
+              <div class="experience-date">PRACTICE</div>
+              <div>
+                <h3>Root-cause Investigation</h3>
+                <p>Studied molding flash, cavity-insert drilling errors, WCS and post-processor mismatch, tool deflection, backlash, and CAM-to-machine geometry discrepancies.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section" id="work">
+      <div class="section-grid">
+        <div class="section-index">03 / SELECTED WORK</div>
+        <div>
+          <h2>Engineering projects.</h2>
+          <p class="section-lede">Selected work across manufacturing calculations, fluid simulation, machine design, and instrumentation.</p>
+          <div class="projects">
+            <article class="project">
+              <div class="project-number">01</div>
+              <div><h3>EDM Sinker Time Calculator</h3><p>Ten iterations of an Excel-based estimator using MRR calibration, electrode wear, flushing penalties, and job logging.</p></div>
+              <div class="project-tools">EDM<br>Process modeling<br>Excel</div>
+            </article>
+            <article class="project">
+              <div class="project-number">02</div>
+              <div><h3>Ducted Fan CFD Study</h3><p>A SolidWorks Flow Simulation study exploring airflow through a ducted-fan system for ME-331.</p></div>
+              <div class="project-tools">CFD<br>SolidWorks<br>Fluid mechanics</div>
+            </article>
+            <article class="project">
+              <div class="project-number">03</div>
+              <div><h3>Helical Compression Spring</h3><p>Machine-design work covering spring geometry, loading, stress factors, and design checks.</p></div>
+              <div class="project-tools">Machine design<br>Mechanics</div>
+            </article>
+            <article class="project">
+              <div class="project-number">04</div>
+              <div><h3>Dual-Polarity ±12V Supply</h3><p>Electronics lab project modeled in Proteus and Multisim, linking instrumentation concepts with practical circuit behavior.</p></div>
+              <div class="project-tools">Electronics<br>Simulation</div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tech-section section" id="tech">
+      <div class="shell section-grid">
+        <div class="section-index">04 / TECH &amp; AI</div>
+        <div>
+          <h2>Software as an engineering tool.</h2>
+          <p class="section-lede">Code helps remove repetitive work, turn information into useful interfaces, and communicate technical ideas more clearly.</p>
+          <div class="tech-list">
+            <article class="tech-item"><h3>YouTube-to-Notes</h3><p>A Flask application that transforms video content into structured notes.</p></article>
+            <article class="tech-item"><h3>Subtitle Translator</h3><p>A Chrome extension concept for translating subtitles while watching online video.</p></article>
+            <article class="tech-item"><h3>Network Speed Extension</h3><p>A lightweight browser utility for checking connection performance.</p></article>
+            <article class="tech-item"><h3>AI Video Workflow</h3><p>Experiments with AI-assisted research, visual development, voice, editing, and publishing.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell closing" id="contact">
+      <div>
+        <p class="eyebrow">05 / CONTACT</p>
+        <h2>Learn the system. Improve the outcome.</h2>
+        <p>I’m building practical depth across mechanical engineering, manufacturing, and the digital tools that support both. For internships, project discussions, or collaboration, get in touch.</p>
+        <div class="contact-links" aria-label="Contact links">
+          <a class="contact-link" href="mailto:nisarulhaseebqureshi@gmail.com">
+            <span>Email</span>
+            <strong>nisarulhaseebqureshi@gmail.com</strong>
+          </a>
+          <a class="contact-link" href="https://github.com/nisarulhaseebqureshi-cyber" target="_blank" rel="noopener noreferrer">
+            <span>GitHub</span>
+            <strong>@nisarulhaseebqureshi-cyber</strong>
+          </a>
+        </div>
+      </div>
+      <div class="closing-note">UMT LAHORE<br>MECHANICAL ENGINEERING</div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">NISAR UL HASEEB QURESHI · PORTFOLIO 2026</div>
+  </footer>
+</body>
+</html>
